@@ -1,0 +1,6 @@
+@FeiraTech.API_HostAddress = http://localhost:5158
+
+GET {{FeiraTech.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

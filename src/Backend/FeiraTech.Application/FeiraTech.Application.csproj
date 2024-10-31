@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\FeiraTech.Communication\FeiraTech.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\FeiraTech.Exceptions\FeiraTech.Exceptions.csproj" />
+    <ProjectReference Include="..\FeiraTech.Domain\FeiraTech.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
