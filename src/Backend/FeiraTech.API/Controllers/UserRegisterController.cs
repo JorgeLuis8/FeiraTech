@@ -14,7 +14,8 @@ namespace FeiraTech.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Register (RequestRegisterUserJson request)
         {
-            return Created()
+            ResponseRegisterUserJson response = null;
+            return Created(string.Empty, response)
 ;        }
 
     }
