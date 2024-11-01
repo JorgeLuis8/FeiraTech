@@ -10,10 +10,10 @@ namespace FeiraTech.Infrastructure
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddInfrastructure(this IServiceCollection services)
         {
             AddRepositorie(services);
-            AddDbContext_MySql(services, configuration);
+            AddDbContext_MySql(services);
         }
         public static void AddRepositorie(IServiceCollection services)
         {
@@ -22,9 +22,9 @@ namespace FeiraTech.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
-        public static void AddDbContext_MySql(IServiceCollection services, IConfiguration configuration)
+        public static void AddDbContext_MySql(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("FeiraTechDbContext");
+            var connectionString = "Server=localhost;Database=feiratech;user=root;password=1234;";
             services.AddDbContext<FeiraTechDbContext>(options =>
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
