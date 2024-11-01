@@ -2,6 +2,7 @@
 using FeiraTech.Communication.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using FeiraTech.Application.UseCase.User.Register;
 
 namespace FeiraTech.API.Controllers
 {
@@ -12,9 +13,9 @@ namespace FeiraTech.API.Controllers
     public class UserRegisterController : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> Register (RequestRegisterUserJson request)
+        public async Task<IActionResult> Register([FromServices] IUserRegisterUseCase services, [FromBody] RequestRegisterUserJson request)
         {
-            ResponseRegisterUserJson response = null;
+            ResponseRegisterUserJson response = await services.Execute(request);
             return Created(string.Empty, response)
 ;        }
 

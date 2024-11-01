@@ -8,6 +8,6 @@ namespace FeiraTech.Communication.Response
 {
     public class ResponseRegisterUserJson
     {
-        string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FeiraTech.Application.Services.AutoMapper;
+using FeiraTech.Application.UseCase.User.Register;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FeiraTech.Application
@@ -8,11 +9,12 @@ namespace FeiraTech.Application
         public static void AddApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(AutoMapping));
+            UseCase(services);
         }
 
-        public static void UseCase(IServiceCollection service)
+        public static void UseCase(IServiceCollection services)
         {
-               //services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>();
+               services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>();
         }
 
 

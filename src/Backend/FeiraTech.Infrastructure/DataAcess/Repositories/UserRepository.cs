@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FeiraTech.Domain.Repositorie.User;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace FeiraTech.Infrastructure.DataAcess.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
     {
         private readonly FeiraTechDbContext _context;
+
 
         public UserRepository(FeiraTechDbContext context)
         {
