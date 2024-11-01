@@ -8,7 +8,7 @@ namespace FeiraTech.Domain.Entity
 {
     public class EntityBase
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool Active { get; set; } = true;
     }

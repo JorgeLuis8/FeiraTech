@@ -17,7 +17,7 @@ namespace FeiraTech.Application
         public static void UseCase(IServiceCollection services)
         {
                services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>();
-            q
+            
         }
 
         public static void PasswordHash(IServiceCollection services)

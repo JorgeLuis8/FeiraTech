@@ -52,7 +52,8 @@ namespace FeiraTech.Application.UseCase.User.Register
 
             if (result.IsValid == false)
             {
-                throw new Exception("Dados inválidos");
+                var errors = string.Join("; ", result.Errors.Select(e => e.ErrorMessage));
+                throw new Exception($"Erro(s) de validação: {errors}");
             }      
 
         }
