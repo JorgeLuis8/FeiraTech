@@ -61,6 +61,15 @@ namespace FeiraTech.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a CPF inválido..
+        /// </summary>
+        public static string CPF_INVALID {
+            get {
+                return ResourceManager.GetString("CPF_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O e-mail é obrigatório.
         /// </summary>
         public static string EMAIL_EMPTY {

@@ -1,3 +1,4 @@
+using FeiraTech.API.Filters;
 using FeiraTech.Application;
 using FeiraTech.Infrastructure;
 
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

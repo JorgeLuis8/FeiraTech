@@ -2,8 +2,10 @@
 using FeiraTech.Application.Services.Criptography;
 using FeiraTech.Communication.Requests;
 using FeiraTech.Communication.Response;
+using FeiraTech.Domain.Entity;
 using FeiraTech.Domain.Repositorie;
 using FeiraTech.Domain.Repositorie.User;
+using FeiraTech.Exceptions.ExceptionsBase;
 
 
 namespace FeiraTech.Application.UseCase.User.Register
@@ -46,16 +48,18 @@ namespace FeiraTech.Application.UseCase.User.Register
 
         public void ValidateUser(RequestRegisterUserJson request)
         {
-            //Utilzar o FluentValidation para validar os dados
-            var validation = new UserRegisterValidation();
-            var result = validation.Validate(request);
+            var validator = new UserRegisterValidation();
+            //usando o FluentValidation para validar os campos da request
+            var result = validator.Validate(request);
 
+            //Se a request não for válida, lançar uma exceção
             if (result.IsValid == false)
             {
-                var errors = string.Join("; ", result.Errors.Select(e => e.ErrorMessage));
-                throw new Exception($"Erro(s) de validação: {errors}");
-            }      
-
+                //Pegar a mensagem de erro e lançar uma exceção
+                var errorMessage = result.Errors.Select(e => e.ErrorMessage).ToList();
+                //Lançar uma exceção
+                throw new ErrorOnValidationException(errorMessage);
+            }
         }
 
     }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 using FeiraTech.Exceptions.ExceptionsBase;
 using FeiraTech.Exceptions;
-using FeiraTech.Communication.Responses;
+using FeiraTech.Communication.Response;
 
 namespace FeiraTech.API.Filters
 {
@@ -47,5 +47,3 @@ namespace FeiraTech.API.Filters
 
 }
 
-    }
-}

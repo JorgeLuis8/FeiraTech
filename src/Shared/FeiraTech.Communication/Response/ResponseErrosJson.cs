@@ -1,5 +1,6 @@
-﻿namespace FeiraTech.Communication.Responses
+﻿namespace FeiraTech.Communication.Response
 {
+
     public class ResponseErrosJson
     {
         public IList<string> Errors { get; set; }

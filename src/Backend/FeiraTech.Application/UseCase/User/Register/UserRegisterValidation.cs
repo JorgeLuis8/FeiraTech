@@ -8,29 +8,11 @@ namespace FeiraTech.Application.UseCase.User.Register
     {
         public UserRegisterValidation()
         {
-            RuleFor(x => x.Name)
-                .NotEmpty()
-                .WithMessage("Nome é obrigatório.");
-            RuleFor(x => x.Email)
-                .NotEmpty()
-                .WithMessage("Email é obrigatório.")
-                .EmailAddress()
-                .WithMessage("Email inválido.");
-            RuleFor(x => x.Password)
-                .NotEmpty()
-                .WithMessage("Senha é obrigatória.")
-                .MinimumLength(6)
-                .WithMessage("Senha deve ter no mínimo 6 caracteres.");
-            RuleFor(x => x.CPF)
-                .NotEmpty()
-                .WithMessage("CPF é obrigatório.")
-                .Length(11)
-                .WithMessage("CPF deve ter 11 caracteres.");
-            RuleFor(x => x.Phone)
-                .NotEmpty()
-                .WithMessage("Telefone é obrigatório.")
-                .Length(11)
-                .WithMessage("Telefone deve ter 11 caracteres.");
+            RuleFor(user => user.Name).NotEmpty().WithMessage(ResourceMessagesExceptions.NAME_EMPTY);
+            RuleFor(user => user.Email).NotEmpty().WithMessage(ResourceMessagesExceptions.EMAIL_EMPTY);
+            RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessagesExceptions.EMAIL_INVALID);
+            RuleFor(user => user.Password).MinimumLength(6).WithMessage(ResourceMessagesExceptions.PASSWORD_MINIUM);
+            RuleFor(user => user.CPF).Length(11).WithMessage(ResourceMessagesExceptions.CPF_INVALID);
         }
     }
 }
