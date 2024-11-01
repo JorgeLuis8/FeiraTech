@@ -41,7 +41,7 @@ namespace FeiraTech.API.Filters
         private void ThrowUnknowException(ExceptionContext context)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.Result = new ObjectResult(new ResponseErrosJson(ResourceMessagesException.UNKNOW_ERROR));
+            context.Result = new ObjectResult(new ResponseErrosJson(ResourceMessagesExceptions.UNKNOW_ERROR));
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using FeiraTech.Communication.Requests;
+using FeiraTech.Exceptions;
 using FluentValidation;
 
 namespace FeiraTech.Application.UseCase.User.Register
