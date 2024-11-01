@@ -1,4 +1,5 @@
-﻿using FeiraTech.Domain.Repositorie.User;
+﻿using FeiraTech.Domain.Repositorie;
+using FeiraTech.Domain.Repositorie.User;
 using FeiraTech.Infrastructure.DataAcess;
 using FeiraTech.Infrastructure.DataAcess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace FeiraTech.Infrastructure
         {
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         public static void AddDbContext_MySql(IServiceCollection services, IConfiguration configuration)
@@ -28,6 +30,7 @@ namespace FeiraTech.Infrastructure
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
         }
+
 
     }
 }
