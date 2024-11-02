@@ -24,7 +24,7 @@ namespace FeiraTech.Infrastructure
 
         public static void AddDbContext_MySql(IServiceCollection services)
         {
-            var connectionString = "Server=localhost;Database=feiratech;user=root;password=1234;";
+            var connectionString = "Server=localhost;Database=feiratec;user=root;password=jorge123;";
             services.AddDbContext<FeiraTechDbContext>(options =>
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
