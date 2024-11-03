@@ -11,6 +11,6 @@ namespace FeiraTech.Application.UseCase.User.Register
     public interface IUserRegisterUseCase
     {
         public Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request);
-        public void ValidateUser(RequestRegisterUserJson request);
+        public Task ValidateUser(RequestRegisterUserJson request);
     }
 }

@@ -5,6 +5,7 @@ using FeiraTech.Communication.Response;
 using FeiraTech.Domain.Entity;
 using FeiraTech.Domain.Repositorie;
 using FeiraTech.Domain.Repositorie.User;
+using FeiraTech.Exceptions;
 using FeiraTech.Exceptions.ExceptionsBase;
 
 
@@ -33,7 +34,7 @@ namespace FeiraTech.Application.UseCase.User.Register
 
         public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request) {
             //Validar a request, criar um função para validação dos dados.
-            ValidateUser(request);
+            await ValidateUser(request);
             //Mapear a request ém uma entidade
             var userEntity = _mapper.Map<Domain.Entity.User>(request);
             //Criptografar a senha
@@ -46,11 +47,18 @@ namespace FeiraTech.Application.UseCase.User.Register
             return new ResponseRegisterUserJson { Name = userEntity.Name };
         }
 
-        public void ValidateUser(RequestRegisterUserJson request)
+        public async Task ValidateUser(RequestRegisterUserJson request)
         {
             var validator = new UserRegisterValidation();
             //usando o FluentValidation para validar os campos da request
             var result = validator.Validate(request);
+
+            var emailExists = await _userReadOnlyRepository.EmailIsExists(request.Email);
+
+            if (emailExists)
+            {
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessagesExceptions.EMAIL_EXISTS));
+            }
 
             //Se a request não for válida, lançar uma exceção
             if (result.IsValid == false)
