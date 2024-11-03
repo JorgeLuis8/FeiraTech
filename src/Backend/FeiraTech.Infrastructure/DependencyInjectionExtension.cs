@@ -24,7 +24,7 @@ namespace FeiraTech.Infrastructure
 
         public static void AddDbContext_MySql(IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("FeiraTechDbContext");
+            var connectionString = configuration.GetConnectionString("feiratech");
             services.AddDbContext<FeiraTechDbContext>(options =>
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
