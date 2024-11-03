@@ -1,4 +1,5 @@
 using FeiraTech.API.Filters;
+using FeiraTech.API.Middleware;
 using FeiraTech.Application;
 using FeiraTech.Infrastructure;
 
@@ -26,6 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
