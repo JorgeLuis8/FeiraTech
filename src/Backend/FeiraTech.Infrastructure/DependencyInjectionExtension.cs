@@ -17,6 +17,7 @@ namespace FeiraTech.Infrastructure
         {
             AddRepositorie(services);
             AddDbContext_MySql(services, configuration);
+            FluenteMigrator_MySql(services, configuration);
         }
         public static void AddRepositorie(IServiceCollection services)
         {
