@@ -3,7 +3,7 @@ using MySqlConnector;
 
 namespace FeiraTech.Infrastructure.Migrations
 {
-    public class DatabaseMigrations
+    public static class DatabaseMigrations
     {
         public static void MigrateDatabase(string connectionString)
         {
