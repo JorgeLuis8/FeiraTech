@@ -4,7 +4,6 @@ using FeiraTech.Application;
 using FeiraTech.Infrastructure;
 using FeiraTech.Infrastructure.Extensions;
 using FeiraTech.Infrastructure.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
