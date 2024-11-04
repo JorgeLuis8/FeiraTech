@@ -2,6 +2,8 @@ using FeiraTech.API.Filters;
 using FeiraTech.API.Middleware;
 using FeiraTech.Application;
 using FeiraTech.Infrastructure;
+using FeiraTech.Infrastructure.Extensions;
+using FeiraTech.Infrastructure.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
@@ -35,4 +37,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+Migrate();
+
 app.Run();
+
+void Migrate()
+{
+    var connectionString = builder.Configuration.GetConnectionStringData();
+
+    var serviceScoped = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+    DatabaseMigrations.MigrateDatabase(connectionString, serviceScoped.ServiceProvider);
+}
